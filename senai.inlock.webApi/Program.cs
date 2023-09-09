@@ -27,16 +27,16 @@ AddJwtBearer("JwtBearer", options =>
         ValidateLifetime = true,
 
         //froma de criptografia e valida a chave de autenticacao
-        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao-webapi-dev")),
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao-webapi-dev")),
 
         //valida o tempo de expiracao do token
         ClockSkew = TimeSpan.FromMinutes(5),
 
         //nome do issuer (de onde está vindo)
-        ValidIssuer = "webapi.filme.manha",
+        ValidIssuer = "senai.inlock.webApi",
 
         //nome do audience (para onde está indo)
-        ValidAudience = "webapi.filme.manha"
+        ValidAudience = "senai.inlock.webApi"
     };
 });
 

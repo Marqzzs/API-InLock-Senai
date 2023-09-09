@@ -46,3 +46,14 @@ C:\Users\55358961879\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7
 C:\Users\55358961879\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.csproj.CopyComplete
 C:\Users\55358961879\Desktop\API-InLock-Senai\senai.inlock.webApi\bin\Debug\net7.0\senai.inlock.webApi.xml
 C:\Users\55358961879\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.xml
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.csproj.AssemblyReference.cache
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.AssemblyInfoInputs.cache
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.AssemblyInfo.cs
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.csproj.CoreCompileInputs.cache
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.dll
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\refint\senai.inlock.webApi.dll
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.xml
+C:\Users\Marqz\Desktop\API-InLock-Senai\senai.inlock.webApi\obj\Debug\net7.0\senai.inlock.webApi.pdb

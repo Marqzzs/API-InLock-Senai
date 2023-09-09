@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using senai.inlock.webApi.Domains;
+using senai.inlock.webApi.Interfaces;
 using senai.inlock.webApi.Repositories;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

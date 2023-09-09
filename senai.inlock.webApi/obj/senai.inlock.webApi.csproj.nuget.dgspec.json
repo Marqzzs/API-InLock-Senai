@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\55358961879\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj": {}
+    "C:\\Users\\Marqz\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\55358961879\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj": {
+    "C:\\Users\\Marqz\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\55358961879\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj",
+        "projectUniqueName": "C:\\Users\\Marqz\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj",
         "projectName": "senai.inlock.webApi",
-        "projectPath": "C:\\Users\\55358961879\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj",
-        "packagesPath": "C:\\Users\\55358961879\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\55358961879\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\obj\\",
+        "projectPath": "C:\\Users\\Marqz\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\senai.inlock.webApi.csproj",
+        "packagesPath": "C:\\Users\\Marqz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Marqz\\Desktop\\API-InLock-Senai\\senai.inlock.webApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\55358961879\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Marqz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

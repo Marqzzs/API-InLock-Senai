@@ -22,6 +22,8 @@ namespace senai.inlock.webApi.Domains
         [Required(ErrorMessage = "A senha é obrigatória!")]
         public string? Senha { get; set; }
 
+        public string Titulo { get; set; }
+
         // Declaração da propriedade para representar o tipo de usuário associado (pode ser nulo)
         public TiposUsuarioDomain? TiposUsuario { get; set; }
 
