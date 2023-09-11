@@ -27,6 +27,37 @@
             <param name="novoJogo">Objeto que sera cadastrado</param>
             <returns>Retorna o objeto para o front end</returns>
         </member>
+        <member name="M:senai.inlock.webApi.Controllers.JogoController.Delete(System.Int32)">
+            <summary>
+            End point que acionara o metodo de deletar
+            </summary>
+            <param name="id">id do objeto a ser deletado</param>
+            <returns>Retorna um status code e para o front end</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Controllers.JogoController.BuscarPorId(System.Int32)">
+            <summary>
+            End point que acionara o metodo de buscar por id
+            </summary>
+            <param name="id">id do objeto a ser buscado</param>
+            <returns>Retorna para o front end</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Controllers.JogoController.Atualizar(System.Int32,senai.inlock.webApi.Domains.JogoDomain)">
+            <summary>
+            End point que atualizara um objeto jogo pelo seu corpo
+            </summary>
+            <param name="id">id do objeto a ser atualizado</param>
+            <returns>Retorna um objeto com navas informações</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Controllers.UsuarioController.Login(senai.inlock.webApi.Domains.UsuarioDomain)">
+            <summary>
+            Método para realizar o login de um usuário com base no email e senha fornecidos.
+            </summary>
+            <param name="usuario">O objeto UsuarioDomain contendo o email e senha do usuário.</param>
+            <returns>
+            Um IActionResult que pode ser um NotFound com uma mensagem de erro se o login falhar,
+            ou um Ok com os dados do usuário se o login for bem-sucedido.
+            </returns>
+        </member>
         <member name="T:senai.inlock.webApi.Domains.EstudioDomain">
             <summary>
             Classe que representa a entidade(tabela) Estudio
@@ -46,6 +77,37 @@
             <summary>
             Classe que representa a entidade(tabela) Usuario
             </summary>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Cadastrar(senai.inlock.webApi.Domains.EstudioDomain)">
+            <summary>
+            Cadastra um novo estúdio.
+            </summary>
+            <param name="estudio">Objeto EstudioDomain a ser cadastrado.</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.ListarTodos">
+            <summary>
+            Lista todos os estúdios.
+            </summary>
+            <returns>Uma lista de objetos EstudioDomain.</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Atualizar(senai.inlock.webApi.Domains.EstudioDomain)">
+            <summary>
+            Atualiza os dados de um estúdio.
+            </summary>
+            <param name="estudio">Objeto EstudioDomain com os dados atualizados.</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um estúdio pelo seu ID.
+            </summary>
+            <param name="id">ID do estúdio a ser deletado.</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.Buscarid(System.Int32)">
+            <summary>
+            Busca um estúdio pelo seu ID.
+            </summary>
+            <param name="id">ID do estúdio a ser buscado.</param>
+            <returns>Objeto EstudioDomain correspondente ao ID informado ou null se não encontrado.</returns>
         </member>
         <member name="T:senai.inlock.webApi.Interfaces.IJogoRepository">
             <summary>
@@ -82,6 +144,55 @@
             </summary>
             <param name="id">O ID do jogo a ser buscado.</param>
             <returns>O objeto JogoDomain encontrado ou nulo se não for encontrado.</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Método de autenticação de usuário
+            </summary>
+            <param name="email"> email do usuario </param>
+            <param name="senha"> senha do usuario </param>
+            <returns>retorna um objeto do tipo usuario</returns>s
+        </member>
+        <member name="F:senai.inlock.webApi.Repositories.EstudioRepository.StringConexao">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi.Repositories.EstudioRepository.Atualizar(senai.inlock.webApi.Domains.EstudioDomain)">
+            <summary>
+            
+            </summary>
+            <param name="estudio"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:senai.inlock.webApi.Repositories.EstudioRepository.Buscarid(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:senai.inlock.webApi.Repositories.EstudioRepository.Cadastrar(senai.inlock.webApi.Domains.EstudioDomain)">
+            <summary>
+            
+            </summary>
+            <param name="estudio"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:senai.inlock.webApi.Repositories.EstudioRepository.Deletar(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:senai.inlock.webApi.Repositories.EstudioRepository.ListarTodos">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:senai.inlock.webApi.Repositories.JogoRepository">
             <summary>

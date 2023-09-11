@@ -13,7 +13,7 @@ namespace senai.inlock.webApi.Repositories
             using (SqlConnection connection = new SqlConnection(StringConexao))
             {
                 // Define a consulta SQL para buscar o usuário com base no email e senha fornecidos.
-                string queryUsuario = "SELECT IdUsuario, Email, Titulo FROM Usuario WHERE Email = @Email AND Senha = @Senha";
+                string queryUsuario = "SELECT IdUsuario, Email, IdTipoUsuario FROM Usuario WHERE Email = @email AND Senha = @senha";
 
                 // Abre a conexão com o banco de dados.
                 connection.Open();
@@ -36,7 +36,7 @@ namespace senai.inlock.webApi.Repositories
                         {
                             IdUsuario = Convert.ToInt32(rdr["IdUsuario"]),
                             Email = rdr["Email"].ToString(),
-                            Titulo = rdr["Titulo"].ToString()
+                            IdTipoUsuario = Convert.ToInt32(rdr["IdTipoUsuario"])
                         };
                         return usuario; // Retorna o objeto do usuário encontrado.
                     }

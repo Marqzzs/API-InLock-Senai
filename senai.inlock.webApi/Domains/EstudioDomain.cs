@@ -13,6 +13,6 @@ namespace senai.inlock.webApi.Domains
         // Declaração da propriedade para armazenar o nome do estúdio (pode ser nulo)
         [Required(ErrorMessage = "O nome do estúdio é obrigatório!")]
         public string? Nome { get; set; }
-
+        public List<JogoDomain> Jogos { get; internal set; }
     }
 }

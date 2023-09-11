@@ -26,7 +26,29 @@ namespace senai.inlock.webApi.Repositories
         /// <param name="jogo">O objeto JogoDomain com as informações atualizadas.</param>
         public void Atualizar(JogoDomain jogo)
         {
-            // Implementação do método para atualizar um jogo no repositório.
+            using (SqlConnection connection = new SqlConnection(StringConexao))
+            {
+                // Define a consulta SQL para atualizar os dados do filme com base no ID do filme
+                string queryInsert = "UPDATE Jogo SET Nome = @Nome, IdEstudio = @idEstudio, Descricao = @Descricao, DataLancamento = @DataLancamento, Valor = @Valor WHERE IdJogo = @idJogo";
+
+                // Abre a conexão com o banco de dados
+                connection.Open();
+
+                // Cria um novo comando SQL usando a consulta e a conexão
+                using (SqlCommand cmd = new SqlCommand(queryInsert, connection))
+                {
+                    // Adiciona parâmetros ao comando para substituir os marcadores na consulta
+                    cmd.Parameters.AddWithValue("@idJogo", jogo.IdJogo); // Define o ID do jogo a ser atualizado
+                    cmd.Parameters.AddWithValue("@idEstudio", jogo.IdEstudio); // Define o novo ID estudio do jogo
+                    cmd.Parameters.AddWithValue("@Nome", jogo.Nome); // Define o novo nome do jogo
+                    cmd.Parameters.AddWithValue("@Descricao", jogo.Descricao);
+                    cmd.Parameters.AddWithValue("@DataLancamento", jogo.DataLancamento);
+                    cmd.Parameters.AddWithValue("@Valor", jogo.Valor);
+
+                    // Executa o comando SQL de atualização no banco de dados
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>
@@ -36,8 +58,49 @@ namespace senai.inlock.webApi.Repositories
         /// <returns>O objeto JogoDomain encontrado ou nulo se não for encontrado.</returns>
         public JogoDomain BuscarId(int id)
         {
-            // Implementação do método para buscar um jogo pelo ID no repositório.
-            return null; // Você deve implementar a lógica para retornar o jogo encontrado.
+            using (SqlConnection connection = new SqlConnection(StringConexao))
+            {
+                string queryBuscar = "SELECT IdJogo, IdEstudio, Nome, Descricao, DataLancamento, Valor FROM Jogo WHERE IdJogo= @IdJogo";
+
+                using (SqlCommand cmd = new SqlCommand(queryBuscar, connection))
+                {
+
+                    cmd.Parameters.AddWithValue("@IdJogo", id);
+                    //Abre a conexão com o banco de dados
+                    connection.Open();
+
+                    //Declara o SqlDataReader para percorrer a tabela do banco de dados
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            // Cria um objeto FilmeDomain e preenche suas propriedades com os valores do rdr
+                            JogoDomain jogo = new JogoDomain()
+                            {
+                                IdJogo = Convert.ToInt32(rdr["IdJogo"]),
+                                Nome = rdr["Nome"].ToString(),
+                                Descricao = rdr["Descricao"].ToString(),
+                                DataLancamento = Convert.ToDateTime(rdr["DataLancamento"]).Date,
+                                Valor = Convert.ToSingle(rdr["Valor"]),
+                                IdEstudio = Convert.ToInt32(rdr["IdEstudio"]),
+                                // Cria um novo objeto GeneroDomain e preenche suas propriedades com os valores do rdr
+                                Estudio = new EstudioDomain()
+                                {
+                                    IdEstudio = Convert.ToInt32(rdr["IdEstudio"]),
+                                    Nome = rdr["Nome"].ToString()
+                                }
+                            };
+                            return jogo;
+                        }
+                        else
+                        {
+                            //Retorna nulo
+                            return null;
+                        }
+
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -77,7 +140,23 @@ namespace senai.inlock.webApi.Repositories
         /// <param name="id">O ID do jogo a ser deletado.</param>
         public void Deletar(int id)
         {
-            // Implementação do método para deletar um jogo pelo ID no repositório.
+            //Declara a conexão passando a string de conexão como parametro
+            using (SqlConnection connection = new SqlConnection(StringConexao))
+            {
+                //Declara a query a ser executada
+                string queryDelete = "DELETE FROM Jogo WHERE IdJogo = @IdJogo";
+                //Declara o SqlCommand passando a query que será execuatada e a conexão com o bd
+                using (SqlCommand cmd = new SqlCommand(queryDelete, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdJogo", id);
+
+                    //Abre a conexão com o bd
+                    connection.Open();
+
+                    //Executar a query(queryInsert)
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>

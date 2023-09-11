@@ -11,7 +11,7 @@ namespace senai.inlock.webApi.Domains
         public int IdTipoUsuario { get; set; }
 
         // Declaração da propriedade para armazenar o título do usuário (pode ser nulo)
-        [Required(ErrorMessage = "O título do usuário é obrigatório!")]
+        [Required]
         public string? Titulo { get; set; }
 
     }

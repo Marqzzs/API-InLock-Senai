@@ -1,46 +1,50 @@
+ï»¿using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Adiciona o serviço de controllers
+// Add services to the container.
+
 builder.Services.AddControllers();
 
-//adiciona servico jwt bearer (forma de autenticacao)
+// Aciona o serviÃ§o de JWT Bearer ( forma de autenticaÃ§Ã£o )
+
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultChallengeScheme = "JwtBearer";
-    options.DefaultAuthenticateScheme = "JwtBearer";
-});
+options.DefaultChallengeScheme = "JwtBearer";
+options.DefaultAuthenticateScheme = "JwtBearer";
+})
 
-AddJwtBearer("JwtBearer", options =>
+.AddJwtBearer("JwtBearer", options =>
 {
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        //valida quem está solicitando
-        ValidateIssuer = true,
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         //valida quem estÃ¡ solicitando
+         ValidateIssuer = true,
 
-        //valida quem está recebendo
-        ValidateAudience = true,
+         //valida quem estÃ¡ recebendo
+         ValidateAudience = true,
 
-        //define se o tempo de expiracao sera validado 
-        ValidateLifetime = true,
+         //define se o tempo de expiracao sera validado 
+         ValidateLifetime = true,
 
-        //froma de criptografia e valida a chave de autenticacao
-        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao-webapi-dev")),
+         //froma de criptografia e valida a chave de autenticacao
+         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao-webapi-dev")),
 
-        //valida o tempo de expiracao do token
-        ClockSkew = TimeSpan.FromMinutes(5),
+         //valida o tempo de expiracao do token
+         ClockSkew = TimeSpan.FromMinutes(5),
 
-        //nome do issuer (de onde está vindo)
-        ValidIssuer = "senai.inlock.webApi",
+         //nome do issuer (de onde estÃ¡ vindo)
+         ValidIssuer = "senai.inlock.webApi",
 
-        //nome do audience (para onde está indo)
-        ValidAudience = "senai.inlock.webApi"
-    };
-});
+         //nome do audience (para onde estÃ¡ indo)
+         ValidAudience = "senai.inlock.webApi"
+     };
+ });
 
-//Adiciona o serviço de Swagger
+//Adiciona o serviÃ§o de Swagger
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -55,11 +59,11 @@ builder.Services.AddSwaggerGen(options =>
         },
 
     });
-    // Configure o Swagger para usar o arquivo XML gerado com as instruções anteriores;
+    // Configure o Swagger para usar o arquivo XML gerado com as instruÃ§Ãµes anteriores;
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
-    //Usando a autenticaçao no Swagger
+    //Usando a autenticaÃ§ao no Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
@@ -88,7 +92,7 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-//Começa a configuração do Swagger
+//ComeÃ§a a configuraÃ§Ã£o do Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -104,9 +108,9 @@ app.UseSwaggerUI(options =>
 
 //Adiciona o mapeamento dos controllers
 app.MapControllers();
-//adiciona a autenticação
+//adiciona a autenticaÃ§Ã£o
 app.UseAuthentication();
-//adiciona a autorização
+//adiciona a autorizaÃ§Ã£o
 app.UseAuthorization();
 
 app.UseHttpsRedirection();

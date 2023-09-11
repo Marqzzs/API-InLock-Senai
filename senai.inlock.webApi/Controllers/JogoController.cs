@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
 using senai.inlock.webApi.Repositories;
+using System.Data;
 
 namespace senai.inlock.webApi.Controllers
 {
@@ -35,6 +37,7 @@ namespace senai.inlock.webApi.Controllers
         /// </summary>
         /// <returns>Retorna a lista</returns>
         [HttpGet]
+        [Authorize(Roles = "1, 2")]
         public IActionResult Get()
         {
             try
@@ -57,6 +60,7 @@ namespace senai.inlock.webApi.Controllers
         /// <param name="novoJogo">Objeto que sera cadastrado</param>
         /// <returns>Retorna o objeto para o front end</returns>
         [HttpPost]
+        [Authorize(Roles = "2")]
         public IActionResult Post(JogoDomain novoJogo)
         {
             try
@@ -69,6 +73,95 @@ namespace senai.inlock.webApi.Controllers
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
+            }
+        }
+
+        /// <summary>
+        /// End point que acionara o metodo de deletar
+        /// </summary>
+        /// <param name="id">id do objeto a ser deletado</param>
+        /// <returns>Retorna um status code e para o front end</returns>
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "2")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _jogoRepository.Deletar(id);
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+        
+        /// <summary>
+        /// End point que acionara o metodo de buscar por id
+        /// </summary>
+        /// <param name="id">id do objeto a ser buscado</param>
+        /// <returns>Retorna para o front end</returns>
+        [HttpGet("{id}")]
+        [Authorize(Roles = "1, 2")]
+        public IActionResult BuscarPorId(int id)
+        {
+            try
+            {
+                JogoDomain jogo = _jogoRepository.BuscarId(id);
+
+                if (jogo != null)
+                {
+                    return Ok(jogo); // Retorna o gênero encontrado com status 200 OK
+                }
+                else
+                {
+                    return NotFound(); // Retorna 404 Not Found se o gênero não for encontrado
+                }
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message); // Retorna erro 400 Bad Request em caso de exceção
+            }
+        }
+
+        /// <summary>
+        /// End point que atualizara um objeto jogo pelo seu corpo
+        /// </summary>
+        /// <param name="id">id do objeto a ser atualizado</param>
+        /// <returns>Retorna um objeto com navas informações</returns>
+        [HttpPut]
+        [Authorize(Roles = "2")]
+        public IActionResult Atualizar(int id, JogoDomain jogo)
+        {
+            try
+            {
+                // Busca o jogo pelo ID
+                JogoDomain jogoBuscado = _jogoRepository.BuscarId(id);
+
+                if (jogoBuscado != null)
+                {
+                    // Atualiza as propriedades do jogo buscado com os dados do jogo atualizado
+                    jogoBuscado.Nome = jogo.Nome;
+                    jogoBuscado.IdEstudio = jogo.IdEstudio;
+
+                    try
+                    {
+                        _jogoRepository.Atualizar(jogoBuscado);
+                        return Ok(); // Retorna um status code de sucesso
+                    }
+                    catch (Exception erro)
+                    {
+                        return BadRequest(erro.Message); // Retorna um status code de erro
+                    }
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado"); // Retorna um status code 404 se o jogo não for encontrado
+                }
+            }
+            catch
+            {
+                return NotFound("Filme não encontrado");
             }
         }
     }
